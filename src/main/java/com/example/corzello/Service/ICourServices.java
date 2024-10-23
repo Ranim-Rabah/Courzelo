@@ -1,4 +1,4 @@
-package com.example.corzello.servicesImpl;
+package com.example.corzello.Service;
 
 import com.example.corzello.Entity.Cours;
 import jakarta.servlet.http.HttpSession;

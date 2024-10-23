@@ -1,7 +1,8 @@
-package com.example.iheb.controller;
+package com.example.corzello.Controller;
 
-import com.example.iheb.entities.prof;
-import com.example.iheb.services.IprofService;
+
+import com.example.corzello.Entity.Prof;
+import com.example.corzello.Service.IprofService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,16 +19,16 @@ public class ProfC {
 
     @PostMapping("/add")
     @ResponseBody
-    public prof ajouterprof (@RequestBody prof p){
+    public Prof ajouterprof (@RequestBody Prof p){
         return iprofService.ajprof(p);
     }
     @GetMapping("/all")
-    public List<prof> retrieveAll() {
+    public List<Prof> retrieveAll() {
         return iprofService.retrieveAll();
     }
 
     @PutMapping("/updatecm/{idprof}")
-    public prof updateclassManagement(@PathVariable int idprof, @RequestBody prof profx) {
+    public Prof updateclassManagement(@PathVariable int idprof, @RequestBody Prof profx) {
         return iprofService.update(idprof,profx);
     }
 
@@ -37,7 +38,7 @@ public class ProfC {
     }
 
     @GetMapping("/class/{idClass}")
-    public List<prof> getidclass(@PathVariable int idClass) {
+    public List<Prof> getidclass(@PathVariable int idClass) {
         return iprofService.getProfClass(idClass);
     }
 

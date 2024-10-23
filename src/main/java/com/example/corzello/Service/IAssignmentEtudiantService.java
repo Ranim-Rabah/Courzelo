@@ -1,6 +1,7 @@
-package com.example.iheb.services;
+package com.example.corzello.Service;
 
-import com.example.iheb.entities.AssignmentEtudiant;
+
+import com.example.corzello.Entity.AssignmentEtudiant;
 
 public interface IAssignmentEtudiantService {
 

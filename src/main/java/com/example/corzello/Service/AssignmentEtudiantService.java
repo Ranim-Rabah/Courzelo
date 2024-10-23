@@ -1,12 +1,13 @@
-package com.example.iheb.services;
+package com.example.corzello.Service;
 
-import com.example.iheb.entities.Assignment;
-import com.example.iheb.entities.AssignmentEtudiant;
-import com.example.iheb.entities.AssignmentEtudiantId;
-import com.example.iheb.entities.etudiant;
-import com.example.iheb.repositories.AssignmentEtudiantRepo;
-import com.example.iheb.repositories.IAssignmentrepo;
-import com.example.iheb.repositories.Ietudiantrepository;
+
+import com.example.corzello.Entity.Assignment;
+import com.example.corzello.Entity.AssignmentEtudiant;
+import com.example.corzello.Entity.AssignmentEtudiantId;
+import com.example.corzello.Entity.Etudiant;
+import com.example.corzello.Repository.AssignmentEtudiantRepo;
+import com.example.corzello.Repository.IAssignmentrepo;
+import com.example.corzello.Repository.Ietudiantrepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class AssignmentEtudiantService implements IAssignmentEtudiantService{
     public AssignmentEtudiant addAssignmentEtudiant(AssignmentEtudiant assignmentEtudiant, int idAssignment, int idEtudiant) {
         Assignment a =new Assignment();
         a.setIdassignment(idAssignment);
-        etudiant e = new etudiant();
+        Etudiant e = new Etudiant();
         e.setIdetudiant(idEtudiant);
         assignmentEtudiant.setEtudiant(e);
         assignmentEtudiant.setAssignment(a);

@@ -22,8 +22,8 @@ public class Compte_rendu {
 
     @OneToMany(mappedBy = "compteRendu",cascade = CascadeType.ALL)
     private Set<Cours> cours;
-    @ManyToMany(mappedBy = "compteRendus",cascade = CascadeType.ALL)
-    private Set<Etudiant>etudiants;
+
+
 
    
 }

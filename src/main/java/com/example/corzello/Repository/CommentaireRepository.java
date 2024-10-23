@@ -9,6 +9,7 @@ import java.util.List;
 @Repository
 public interface CommentaireRepository extends JpaRepository<Commentaire, Long> {
     List<Commentaire> findByPublicationIdPublication(Long id);
-
+    int countByPublicationIdPublication(Long idPublication);
+    int countByUserId(Long userId);
 
 }

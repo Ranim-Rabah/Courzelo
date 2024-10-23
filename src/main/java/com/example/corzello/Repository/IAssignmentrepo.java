@@ -1,7 +1,7 @@
-package com.example.iheb.repositories;
+package com.example.corzello.Repository;
 
-import com.example.iheb.entities.Assignment;
-import com.example.iheb.entities.prof;
+
+import com.example.corzello.Entity.Assignment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

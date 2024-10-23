@@ -1,4 +1,4 @@
-package com.example.corzello.Security;
+package com.example.corzello.Service;
 
 import com.example.corzello.Entity.ModuleEntity;
 import com.example.corzello.Entity.Prog_educatif;

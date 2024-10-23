@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PublicationService {
 
-    public Publication ajouterPublication(Publication publication);
+    public Publication ajouterPublication(Publication publication, Long userId);
     public Publication updatePublication(Publication publication);
     public Publication getPublicationById(long idPublication);
     public List<Publication> getAllPublication();

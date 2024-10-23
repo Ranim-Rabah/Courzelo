@@ -1,4 +1,4 @@
-package com.example.iheb.entities;
+package com.example.corzello.Entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

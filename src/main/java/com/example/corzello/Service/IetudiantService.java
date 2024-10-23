@@ -1,10 +1,11 @@
-package com.example.iheb.services;
+package com.example.corzello.Service;
 
-import com.example.iheb.entities.etudiant;
+
+import com.example.corzello.Entity.Etudiant;
 
 import java.util.List;
 
 public interface IetudiantService {
-    public List<etudiant> getAll();
-    public etudiant ajetudiant(etudiant p );
+    public List<Etudiant> getAll();
+    public Etudiant ajetudiant(Etudiant p );
 }

@@ -1,6 +1,5 @@
 package com.example.corzello.Security;
 
-import com.example.corzello.Entity.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -22,20 +21,17 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     @Autowired
-     JwtAuthenticationFilter jwtAuthFilter;
+    JwtAuthenticationFilter jwtAuthFilter;
     @Autowired
-     AuthenticationProvider authenticationProvider ;
+    AuthenticationProvider authenticationProvider ;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
                 .csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(
-                        req -> req.requestMatchers("/userapi/register","/userapi/authenticate","/publications/**").permitAll()
-                                .requestMatchers("/Module/**").hasAuthority("Recruteur")
-                                .requestMatchers("/Program/**").hasAnyAuthority("Prof","Universite")
-                                .requestMatchers("api/vote/**","/comments/**").hasAuthority("Etudiant")
+                        req -> req.requestMatchers("/userapi/register","/Module/**","api/vote/**","/Program/**","/userapi/authenticate","/publications/**","/recruitment/**","/Quiz/**","/comments/**","/scrape/**","/userapi/forgot-password","/userapi/googleSignIn","/userapi/set-password").permitAll()
                                 .requestMatchers("/userapi/role/addtoUser","/userapi/allusers").hasAnyAuthority("ROLE_Admin")
                                 .anyRequest()
-                            .authenticated()
+                                .authenticated()
                 ).sessionManagement(session ->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

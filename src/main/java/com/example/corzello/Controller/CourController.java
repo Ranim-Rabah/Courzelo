@@ -1,46 +1,18 @@
 package com.example.corzello.Controller;
 
 
-import com.example.corzello.Entity.Classe;
-import com.example.corzello.Entity.Cours;
-import com.example.corzello.Entity.Etudiant;
-import com.example.corzello.Entity.Prof;
-import com.example.corzello.Entity.Module;
-import com.example.corzello.Repositories.ClasseRepo;
-import com.example.corzello.Repositories.CourRepo;
-import com.example.corzello.Repositories.EtudiantRepo;
-import com.example.corzello.Repositories.ModuleRepo;
-import com.example.corzello.Repositories.ProfRepo;
-import com.example.corzello.servicesImpl.ICourServices;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
-import jakarta.transaction.Transactional;
+import com.example.corzello.Entity.*;
+import com.example.corzello.Repository.*;
+import com.example.corzello.Service.ICourServices;
 import lombok.AllArgsConstructor;
-import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
-import org.springframework.data.crossstore.ChangeSetPersister;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
-
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -57,16 +29,16 @@ public class CourController {
     private CourRepo courRepo;
 
     @Autowired
-    private ClasseRepo classeRepo;
+    private Iclassrepo classeRepo;
 
     @Autowired
-    private EtudiantRepo etudiantRepo;
+    private Ietudiantrepository etudiantRepo;
 
     @Autowired
-    private ModuleRepo moduleRepo;
+    private ModuleRepository moduleRepo;
 
     @Autowired
-    private ProfRepo profRepo;
+    private Iprofrepo profRepo;
 
     @Autowired
     ICourServices iCourServices;
@@ -148,7 +120,7 @@ public class CourController {
 
     @GetMapping("/countClasses")
     public Integer getCountClasses(){
-        List<Classe> listClasses = classeRepo.findAll();
+        List<classManagement> listClasses = classeRepo.findAll();
         System.out.printf("list Classes",listClasses);
         return listClasses.size();
     }
@@ -162,7 +134,7 @@ public class CourController {
 
     @GetMapping("/countModules")
     public Integer getCountModules(){
-        List<Module> listModules = moduleRepo.findAll();
+        List<ModuleEntity> listModules = (List<ModuleEntity>) moduleRepo.findAll();
         System.out.printf("list modules",listModules);
         return listModules.size();
     }

@@ -25,15 +25,20 @@ public class Publication {
     private int upvoteCount ; // Attribute to store upvote count
     private int downvoteCount ; // Attribute to store downvote count
 
-    private int netScore;
-
-    private int commentCount;
-    
     private String title;
     private String description;
     private String body;
 
     private String tags;
+
+
+    private int netScore;
+
+    private boolean topPublication;
+
+    private String imagePath;
+    private String filePath;
+
 
 
     @OneToMany(mappedBy = "publication", cascade = CascadeType.ALL)
@@ -43,9 +48,11 @@ public class Publication {
     @OneToMany(mappedBy = "publication", cascade = CascadeType.ALL)
     private Set<Commentaire> commentaires;
 
-
     @ManyToOne(cascade = CascadeType.ALL)
     private Forum forum;
 
-}
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 
+}

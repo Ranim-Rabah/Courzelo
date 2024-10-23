@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface CommentaireService {
 
-
-
+    public int countCommentsByPublicationId(Long idPublication);
+    public int countCommentsByUserId(Long userId);
     Commentaire createComment(Long idPublication, Commentaire commentaire);
 
     List<Commentaire> getCommentsByPublicationId(Long idPublication);

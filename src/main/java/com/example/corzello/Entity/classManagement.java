@@ -1,6 +1,5 @@
-package com.example.iheb.entities;
+package com.example.corzello.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -26,12 +25,12 @@ public class classManagement implements Serializable {
     @OneToMany(mappedBy = "classM", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     //@JsonIgnore
-    private List<etudiant> etudiants = new ArrayList<>();
+    private List<Etudiant> Etudiants = new ArrayList<>();
 
     @OneToMany(mappedBy = "classMa", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     //@JsonIgnore
-    private List<prof> profs = new ArrayList<>();
+    private List<Prof> Profs = new ArrayList<>();
 
 
 

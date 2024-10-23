@@ -1,9 +1,8 @@
-package com.example.iheb.controller;
+package com.example.corzello.Controller;
 
-import com.example.iheb.entities.prof;
-import com.example.iheb.entities.etudiant;
-import com.example.iheb.services.IetudiantService;
-import com.example.iheb.services.IprofService;
+
+import com.example.corzello.Entity.Etudiant;
+import com.example.corzello.Service.IetudiantService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,11 +19,11 @@ public class etudiantC {
 
     @PostMapping("/add")
     @ResponseBody
-    public etudiant ajouteretudiant (@RequestBody etudiant e){
+    public Etudiant ajouteretudiant (@RequestBody Etudiant e){
         return ietudiantService.ajetudiant(e);
     }
     @GetMapping("/all")
-    public List<etudiant> retrieveAll() {
+    public List<Etudiant> retrieveAll() {
         return ietudiantService.getAll();
     }
 

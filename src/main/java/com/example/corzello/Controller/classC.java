@@ -1,9 +1,9 @@
-package com.example.iheb.controller;
+package com.example.corzello.Controller;
 
-import com.example.iheb.entities.classManagement;
-import com.example.iheb.entities.etudiant;
-import com.example.iheb.entities.prof;
-import com.example.iheb.services.IclassService;
+
+import com.example.corzello.Entity.classManagement;
+import com.example.corzello.Entity.Etudiant;
+import com.example.corzello.Service.IclassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -61,7 +61,7 @@ public class classC {
         return iclassService.affecterprofAClass(idprof, nomClass);
     }
     @GetMapping("/{idClass}/etudiant")
-    public List<etudiant> getidclass(@PathVariable int idClass) {
+    public List<Etudiant> getidclass(@PathVariable int idClass) {
         return iclassService.getEtudiant(idClass);
     }
 }

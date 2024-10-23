@@ -1,13 +1,10 @@
-package com.example.iheb.entities;
+package com.example.corzello.Entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -26,6 +23,6 @@ public class Assignment implements Serializable {
     List<AssignmentEtudiant> etudiants ;
     @ManyToOne
     @JsonIgnore
-    prof prof;
+    Prof prof;
 
 }

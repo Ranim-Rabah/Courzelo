@@ -1,7 +1,8 @@
-package com.example.iheb.controller;
+package com.example.corzello.Controller;
 
-import com.example.iheb.entities.Assignment;
-import com.example.iheb.services.IassignmentService;
+
+import com.example.corzello.Entity.Assignment;
+import com.example.corzello.Service.IassignmentService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

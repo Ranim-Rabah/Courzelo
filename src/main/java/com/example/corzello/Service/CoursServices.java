@@ -1,12 +1,13 @@
-package com.example.corzello.Services;
+package com.example.corzello.Service;
 
 
 import com.example.corzello.Entity.Cours;
-import com.example.corzello.Repositories.CourRepo;
-import com.example.corzello.servicesImpl.ICourServices;
+
+import com.example.corzello.Repository.CourRepo;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -17,7 +18,8 @@ import java.util.List;
 @Slf4j
 public class CoursServices implements ICourServices {
 
-    CourRepo courRepo;
+    @Autowired
+   private CourRepo courRepo;
 
     @Override
 
@@ -40,7 +42,7 @@ public class CoursServices implements ICourServices {
 
     @Override
     public List<Cours> getAllCours() {
-        return (List<Cours>) courRepo.findAll();
+        return  courRepo.findAll();
     }
 
 

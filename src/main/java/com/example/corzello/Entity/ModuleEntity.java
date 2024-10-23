@@ -20,8 +20,7 @@ import java.util.Set;
 
 public class ModuleEntity implements Serializable {
     @Id
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idModule;
 
@@ -39,14 +38,15 @@ public class ModuleEntity implements Serializable {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Prof prof;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "idProg")
     @JsonIgnore
     private Prog_educatif progEducatif;
     @OneToMany(mappedBy = "module",cascade = CascadeType.ALL)
 
     private Set<Cours> cours;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Quiz quiz;
+    @JsonIgnore
+    @OneToMany( mappedBy ="moduleEntity" ,cascade = CascadeType.ALL)
+    private Set<Quiz> quizzes;
 
 }

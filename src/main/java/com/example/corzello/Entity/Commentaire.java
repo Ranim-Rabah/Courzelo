@@ -1,7 +1,7 @@
 package com.example.corzello.Entity;
 
 
-import com.example.corzello.Entity.Publication;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -33,4 +33,10 @@ public class Commentaire {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at")
     private Date createdAt;
+
+
+    @ManyToOne
+    @JoinColumn(name = "user_id") // Colonne pour stocker l'ID de l'utilisateur
+    private UserEntity user;
+
 }

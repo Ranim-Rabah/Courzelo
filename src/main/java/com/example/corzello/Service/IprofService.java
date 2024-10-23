@@ -1,17 +1,17 @@
-package com.example.iheb.services;
+package com.example.corzello.Service;
 
-import com.example.iheb.entities.classManagement;
-import com.example.iheb.entities.prof;
+
+import com.example.corzello.Entity.Prof;
 
 import java.util.List;
 
 public interface IprofService {
 
-    public List<prof> getAll();
-    public prof ajprof(prof p );
-    public List<prof> retrieveAll();
+    public List<Prof> getAll();
+    public Prof ajprof(Prof p );
+    public List<Prof> retrieveAll();
     public void remove(int idprof);
-    public prof update(int id,prof p);
+    public Prof update(int id, Prof p);
 
-    List<prof> getProfClass(int idClass);
+    List<Prof> getProfClass(int idClass);
 }

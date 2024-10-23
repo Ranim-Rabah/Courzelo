@@ -11,6 +11,14 @@ public interface QuestionService {
 
     public Question AjouterQuestion(Long idQuiz, Question question);
 
+    //@Override
+    //public Question AjouterQuestion(Long idQuiz, Question question) {
+    //  Quiz quiz=this.quizRepository.findById(idQuiz).orElse(null);
+    //  if(quiz != null){
+    //    question.setQuiz(quiz);
+    // }
+    // return this.questionRepository.save(question);
+    // }
     public void deleteQuestion(Long idQuestion);
 
     public List<Question> getAllQuestion();

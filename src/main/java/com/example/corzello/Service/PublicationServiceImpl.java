@@ -2,8 +2,9 @@ package com.example.corzello.Service;
 
 import com.example.corzello.Entity.Publication;
 import com.example.corzello.Entity.Publication;
-import com.example.corzello.Repository.CommentaireRepository;
+import com.example.corzello.Entity.UserEntity;
 import com.example.corzello.Repository.PublicationRepository;
+import com.example.corzello.Repository.UserRepo;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,9 @@ import java.util.Optional;
 @Service
 public class PublicationServiceImpl  implements  PublicationService{
 
-
-    private PublicationRepository publicationRepository;
-
     @Autowired
-    private CommentaireRepository commentaireRepository;
-
+    private UserRepo userRepository ;
+    private PublicationRepository publicationRepository;
 
     public PublicationServiceImpl(PublicationRepository publicationRepository){
         this.publicationRepository=publicationRepository;
@@ -27,7 +25,10 @@ public class PublicationServiceImpl  implements  PublicationService{
 
 
     @Override
-    public Publication ajouterPublication(Publication publication) {
+    public Publication ajouterPublication(Publication publication, Long userId) {
+        UserEntity user = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("Utilisateur non trouvé avec l'ID : " + userId));
+        publication.setUser(user);
         return publicationRepository.save(publication);
     }
 
@@ -54,15 +55,12 @@ public class PublicationServiceImpl  implements  PublicationService{
 
     @Override
     public Publication getPublicationById(long idPublication) {
-        Publication publication = publicationRepository.findById(idPublication).orElse(null);
-
-        return publication;
+        return  publicationRepository.findById(idPublication).orElse(null);
     }
+
     @Override
     public List<Publication> getAllPublication() {
         return (List<Publication>) publicationRepository.findAll()  ;
-
-
     }
 
     @Override

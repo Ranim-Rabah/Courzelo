@@ -74,6 +74,8 @@ public class UserEntity implements UserDetails {
         return true;
     }
 
+    public String fullname(){return firstname+""+lastname;}
+
     @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     private Recruteur recruteur;
     @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)

@@ -35,8 +35,12 @@ public class ScrapingController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // Error response
         }
     }
-    @GetMapping("GetAll")
+    /*@GetMapping("GetAllByUser/")
     public List<proposed_job_offer> getAllProposedJobOffer() {
-        return scrapingService.getAllProposedJobOffer();
+        return scrapingService.getAllProposedJobOffer( );
+    }*/
+    @GetMapping("/job-offers/user/{userId}")
+    public List<proposed_job_offer> getJobOffersForUser(@PathVariable long userId) {
+        return scrapingService.getJobOffersForUser(userId);
     }
 }

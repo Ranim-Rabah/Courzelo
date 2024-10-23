@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
-
 @RestController
 @RequestMapping("/comments")
 
@@ -48,5 +47,10 @@ public class CommentaireController {
     public ResponseEntity<?> deleteComment(@PathVariable Long idCommentaire) {
         commentaireService.deleteComment(idCommentaire);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/user/{userId}/count")
+    public ResponseEntity<Integer> countCommentsByUserId(@PathVariable Long userId) {
+        int commentCount = commentaireService.countCommentsByUserId(userId);
+        return new ResponseEntity<>(commentCount, HttpStatus.OK);
     }
 }

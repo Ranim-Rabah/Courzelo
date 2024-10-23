@@ -1,7 +1,8 @@
-package com.example.iheb.services;
+package com.example.corzello.Service;
 
-import com.example.iheb.entities.prof;
-import com.example.iheb.repositories.Iprofrepo;
+
+import com.example.corzello.Entity.Prof;
+import com.example.corzello.Repository.Iprofrepo;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,35 +18,35 @@ import java.util.List;
 public class profservice implements IprofService {
     public Iprofrepo iprofrepo;
     @Override
-    public List<prof> getAll() {
+    public List<Prof> getAll() {
         return iprofrepo.findAll();
     }
 
     @Override
-    public prof ajprof(prof p) {
+    public Prof ajprof(Prof p) {
         return iprofrepo.save(p);
     }
 
     @Override
-    public List<prof> retrieveAll() {
+    public List<Prof> retrieveAll() {
         return iprofrepo.findAll();
     }
 
     @Override
     public void remove(int idprof) {
-        prof p = iprofrepo.findById(idprof).orElse(null);
+        Prof p = iprofrepo.findById(idprof).orElse(null);
         iprofrepo.delete(p);
     }
 
     @Override
-    public prof update(int id,prof p) {
+    public Prof update(int id, Prof p) {
         p.setIdprof(id);
         return iprofrepo.save(p);
     }
 
     @Override
-    public List<prof> getProfClass(int idClass) {
-        List<prof> list = iprofrepo.findAll();
+    public List<Prof> getProfClass(int idClass) {
+        List<Prof> list = iprofrepo.findAll();
         return list.stream().filter(p->p.getClassMa().getIdclass()==idClass).toList();
 
     }

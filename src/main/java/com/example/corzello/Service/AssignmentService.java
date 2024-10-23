@@ -1,7 +1,8 @@
-package com.example.iheb.services;
+package com.example.corzello.Service;
 
-import com.example.iheb.entities.Assignment;
-import com.example.iheb.repositories.IAssignmentrepo;
+
+import com.example.corzello.Entity.Assignment;
+import com.example.corzello.Repository.IAssignmentrepo;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

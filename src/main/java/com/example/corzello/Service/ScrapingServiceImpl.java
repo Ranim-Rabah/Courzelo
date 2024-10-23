@@ -14,8 +14,11 @@ public class ScrapingServiceImpl implements ScrapingService{
         this.scrapingRepo = scrapingRepo;
     }
 
-    @Override
+    /*@Override
     public List<proposed_job_offer> getAllProposedJobOffer() {
         return scrapingRepo.findAll();
-    }
+    }*/
+    @Override
+    public List<proposed_job_offer> getJobOffersForUser(long userId) {
+        return scrapingRepo.getJobOffersForUser(userId);}
 }

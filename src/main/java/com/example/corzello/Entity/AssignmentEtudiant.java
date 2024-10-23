@@ -1,4 +1,4 @@
-package com.example.iheb.entities;
+package com.example.corzello.Entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -26,7 +26,7 @@ public class AssignmentEtudiant implements Serializable {
     @ManyToOne
     @MapsId("idetudiant")
     @JoinColumn(name = "idetudiant")
-    etudiant etudiant;
+    Etudiant etudiant;
 
     float grade =-1;
 

@@ -1,4 +1,4 @@
-package com.example.corzello.Repositories;
+package com.example.corzello.Repository;
 
 import com.example.corzello.Entity.Cours;
 

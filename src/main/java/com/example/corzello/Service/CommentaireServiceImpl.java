@@ -54,4 +54,14 @@ public class CommentaireServiceImpl implements CommentaireService {
     public void deleteComment(Long idCommentaire) {
         commentaireRepository.deleteById(idCommentaire);
     }
+    @Override
+    public int countCommentsByPublicationId(Long idPublication) {
+        return commentaireRepository.countByPublicationIdPublication(idPublication);
+    }
+
+    @Override
+    public int countCommentsByUserId(Long userId) {
+        return commentaireRepository.countByUserId(userId);
+    }
+
 }

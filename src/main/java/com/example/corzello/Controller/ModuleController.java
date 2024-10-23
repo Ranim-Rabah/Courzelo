@@ -1,8 +1,8 @@
 package com.example.corzello.Controller;
 
 import com.example.corzello.Entity.ModuleEntity;
-import com.example.corzello.Security.ModuleServcie;
 
+import com.example.corzello.Service.ModuleServcie;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

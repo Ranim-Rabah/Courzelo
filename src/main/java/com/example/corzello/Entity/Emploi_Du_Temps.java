@@ -18,7 +18,5 @@ public class Emploi_Du_Temps {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idEmploiDuTemps;
 
-    @ManyToMany(mappedBy ="emploi_Du_Temps" ,cascade = CascadeType.ALL)
-    private Set<Classe> classes;
 
 }
