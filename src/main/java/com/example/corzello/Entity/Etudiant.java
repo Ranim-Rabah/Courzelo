@@ -1,31 +1,38 @@
 package com.example.corzello.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.FieldDefaults;
 
+import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
-@Entity
 @Getter
 @Setter
-@NoArgsConstructor
+@ToString
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class Etudiant {
+@NoArgsConstructor
+@Entity
+public class Etudiant implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_user;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Classe classe;
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Compte_rendu> compteRendus;
-    @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
-    private Set<reponses_etudiant> reponsesEtudiants;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private int idetudiant;
+    private String nom;
+    private String email;
 
-    @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
-    private Set<Recruitement_çprocess_details> recruitementprocessDetails;
+    @ManyToOne
+    @JoinColumn(name = "idclass")
+    @JsonBackReference
+    private classManagement classM;
+    @OneToMany(mappedBy = "etudiant",cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    List<AssignmentEtudiant> assignmentEtudiant ;
 
-}
+    @OneToMany(mappedBy = "etudiant",cascade = CascadeType.ALL)
+    private Set<Recruitement_process_details> recruitementprocessDetails;
 
 
+   }

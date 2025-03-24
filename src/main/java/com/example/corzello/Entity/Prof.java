@@ -1,26 +1,35 @@
 package com.example.corzello.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.FieldDefaults;
 
+import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
-@Entity
 @Getter
 @Setter
-@NoArgsConstructor
+@ToString
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class Prof {
+@NoArgsConstructor
+@Entity
+public class Prof implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_user;
-    @OneToMany(mappedBy = "prof", cascade = CascadeType.ALL)
-    private Set<Calendrier> Calendriers;
-    @OneToMany(mappedBy = "prof", cascade = CascadeType.ALL)
-    private Set<Module> Modules;
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Classe> classes;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private int idprof;
+    private String nom;
+
+  @OneToMany(mappedBy = "prof",cascade = CascadeType.ALL, orphanRemoval = true)
+  private Set<ModuleEntity> moduleEntities ;
+
+    @ManyToOne
+    @JoinColumn(name = "idclass")
+    @JsonBackReference
+    private classManagement classMa;
+
+    @OneToMany(mappedBy = "prof",cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Assignment> assignments;
 
 }

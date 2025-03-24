@@ -11,17 +11,48 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@EqualsAndHashCode
+
 public class Publication {
-    @Id
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @Column(name = "id_publication")
     private Long idPublication;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Vote vote;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Commentaire commentaire;
+    private int upvoteCount ; // Attribute to store upvote count
+    private int downvoteCount ; // Attribute to store downvote count
+
+    private String title;
+    private String description;
+    private String body;
+
+    private String tags;
+
+
+    private int netScore;
+
+    private boolean topPublication;
+
+    private String imagePath;
+    private String filePath;
+
+
+
+    @OneToMany(mappedBy = "publication", cascade = CascadeType.ALL)
+    private Set<Vote> votes;
+
+
+    @OneToMany(mappedBy = "publication", cascade = CascadeType.ALL)
+    private Set<Commentaire> commentaires;
+
     @ManyToOne(cascade = CascadeType.ALL)
     private Forum forum;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 
 }
